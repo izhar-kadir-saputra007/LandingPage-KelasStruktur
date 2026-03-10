@@ -2,22 +2,10 @@
 import { Inter } from "next/font/google";
 import Image from "next/image"; // Saran 3: Import Image dari Next.js
 import {
-  CheckBadgeIcon,
   AcademicCapIcon,
   BriefcaseIcon,
   UserGroupIcon,
   RocketLaunchIcon,
-  DocumentTextIcon,
-  ComputerDesktopIcon,
-  BuildingOfficeIcon,
-  CpuChipIcon,
-  CircleStackIcon,
-  ClipboardDocumentListIcon,
-  WrenchScrewdriverIcon,
-  CubeIcon,
-  MapIcon,
-  PresentationChartLineIcon,
-  ArrowDownTrayIcon,
   BookOpenIcon, // Saran 1: Icon untuk 150 Materi
   CreditCardIcon, // Saran 1: Icon untuk Sekali Bayar
   UsersIcon, // Saran 1: Icon untuk Grup Komunitas
@@ -27,6 +15,10 @@ import {
   DocumentDuplicateIcon, // Saran 1: Icon untuk Calculation Sheet
   FolderIcon, // Saran 1: Icon untuk File Pendukung
 } from "@heroicons/react/24/outline";
+import ModuleAccordion from "@/components/modules";
+import PricingBatch from "@/components/PricingBatch";
+import FAQ from "@/components/FAQ";
+import StickyDaftar from "@/components/layout/StickyDaftar";
 
 // Optimasi font dengan next/font
 const inter = Inter({
@@ -75,83 +67,6 @@ const audiences = [
   },
 ];
 
-// Data modul (diringkas untuk performa, bisa diperpanjang sesuai kebutuhan)
-const modules = [
-  {
-    icon: ComputerDesktopIcon,
-    title: "Modul 1. Pengenalan Awal & Overview Kelas",
-    items: [
-      "1.1 Pembukaan dan Informasi Kelas",
-      "1.2 Overview Materi Kelas dan Studi Kasus",
-      "Resources - File Pembelajaran",
-    ],
-  },
-  {
-    icon: BuildingOfficeIcon,
-    title: "Modul 3. Studi Kasus - Gedung Office 3 Lantai",
-    items: [
-      "3.0 Pengantar & Overview",
-      "3.1 Data Perencanaan",
-      "3.2-3.9 Preliminary Design (Pelat, Balok, Kolom)",
-      "4.20 Modeling Struktur",
-    ],
-  },
-  {
-    icon: CpuChipIcon,
-    title: "Modul 5. Analisis Struktur Tahan Gempa (SNI)",
-    items: [
-      "5.1-5.4 Analisis Ragam, Periode, Gaya Geser",
-      "5.5-5.12 Validasi Dimensi, Simpangan, P-Delta",
-      "Ketidakberaturan & Faktor Redudansi",
-    ],
-  },
-  {
-    icon: CircleStackIcon,
-    title: "Modul 6-8. Desain Penulangan (Balok, Kolom, Pelat)",
-    items: [
-      "6.1 Desain Tulangan Balok (Lentur & Geser)",
-      "7.1-7.13 Desain Tulangan Kolom & Diagram Interaksi",
-      "8.1-8.12 Desain Tulangan Pelat Lantai",
-    ],
-  },
-  {
-    icon: WrenchScrewdriverIcon,
-    title: "Modul 9. Desain Atap Baja Berat",
-    items: [
-      "9.1-9.2 Komponen & Denah Atap Baja",
-      "9.6-9.10 Modeling, Pembebanan, Analisis",
-      "9.11-9.15 Desain Sambungan (Rafter, Kolom, Base Plate)",
-    ],
-  },
-  {
-    icon: PresentationChartLineIcon,
-    title: "Modul 10. Finalisasi Analisis Struktur Atas",
-    items: [
-      "10.1-10.4 Update Excel & Kombinasi Pembebanan",
-      "10.6-10.19 Cek Eksentrisitas, Partisipasi Massa, Periode, Ketidakberaturan, Simpangan, dll.",
-    ],
-  },
-  {
-    icon: ClipboardDocumentListIcon,
-    title: "Modul 11. Laporan Analisis Struktur",
-    items: ["11.1-11.6 Point Penting Laporan (Bab I s/d V)"],
-  },
-  {
-    icon: CubeIcon,
-    title: "Modul 12. Desain Fondasi Dalam (Bore Pile)",
-    items: [
-      "12.1-12.7 Jenis Fondasi, Data Sondir, Daya Dukung",
-      "12.8-12.10 Cek dengan Geo5",
-      "12.11-12.13 Desain Tulangan Bore Pile, Pile Cap, Tie Beam",
-    ],
-  },
-  {
-    icon: MapIcon,
-    title: "Modul 13. Penutupan Kelas",
-    items: ["13.1 Penutupan Kelas"],
-  },
-];
-
 // Data nilai paket
 const valueItems = [
   { label: "Kelas dengan Materi Terstruktur", value: "Rp 1.200.000,-" },
@@ -164,7 +79,9 @@ const valueItems = [
 
 // Saran 4 & 5: Komponen Reusable untuk Benefit Item
 const BenefitItem = ({ icon: Icon, text }: { icon: any; text: string }) => (
-  <div className="flex items-center gap-4 p-2"> {/* Saran 4: Konsisten gap-4 */}
+  <div className="flex items-center gap-4 p-2">
+    {" "}
+    {/* Saran 4: Konsisten gap-4 */}
     <div
       className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center"
       style={{ backgroundColor: `${primaryColor}15` }}
@@ -177,7 +94,10 @@ const BenefitItem = ({ icon: Icon, text }: { icon: any; text: string }) => (
 
 export default function Home() {
   return (
-    <main className={`${inter.variable} font-sans bg-white text-gray-800`}>
+    <main
+      className={`${inter.variable} font-sans bg-white text-gray-800 py-16`}
+    >
+      <StickyDaftar primaryColor={primaryColor} />
       {/* Hero Section */}
       <section className="relative py-10 md:py-12 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
@@ -215,7 +135,10 @@ export default function Home() {
             </div>
           </div>
           <div className="text-center mt-8 mb-4">
-            <h3 className="text-2xl md:text-3xl font-bold" style={{ color: primaryColor }}>
+            <h3
+              className="text-2xl md:text-3xl font-bold"
+              style={{ color: primaryColor }}
+            >
               Tenang...
             </h3>
           </div>
@@ -237,37 +160,39 @@ export default function Home() {
               kelas yang udah disusun rapi dan terstruktur..
             </p>
             <h4
-              className="text-2xl mb-6 text-center font-black"
+              className="text-5xl mb-6 text-center font-black leading-relaxed"
               style={{ color: primaryColor }}
             >
               JAGO DESAIN STRUKTUR GEDUNG
             </h4>
 
             {/* Saran 5: Layout flex dengan shadow dan tanpa border hijau */}
-           <div className="flex flex-col md:flex-row gap-6 p-6 rounded-xl shadow-lg bg-white">
-  {/* Gambar responsif tanpa ukuran tetap */}
-  <div className="md:w-1/2 w-full">
-    <div className="relative w-full aspect-square rounded-xl overflow-hidden">
-      <Image
-        src="/course/DesainStrukturGedung.jpg"
-        alt="Jago Desain Struktur Gedung - Kursus Desain Struktur"
-        fill
+            <div className="flex flex-col md:flex-row gap-6 p-6 rounded-xl shadow-lg bg-white">
+              {/* Gambar responsif tanpa ukuran tetap */}
+              <div className="md:w-1/2 w-full">
+                <div className="relative w-full aspect-square rounded-xl overflow-hidden">
+                  <Image
+                    src="/course/DesainStrukturGedung.webp"
+                    alt="Jago Desain Struktur Gedung - Kursus Desain Struktur"
+                    fill
+                    priority
+                  />
+                </div>
+              </div>
 
-        priority
-     
-      />
-    </div>
-  </div>
-
-  {/* Konten benefit */}
-  <div className="md:w-1/2 w-full">
-    <div className="grid grid-cols-1 gap-3">
-      {benefits.map((benefit, idx) => (
-        <BenefitItem key={idx} icon={benefit.icon} text={benefit.text} />
-      ))}
-    </div>
-  </div>
-</div>
+              {/* Konten benefit */}
+              <div className="md:w-1/2 w-full">
+                <div className="grid grid-cols-1 gap-3">
+                  {benefits.map((benefit, idx) => (
+                    <BenefitItem
+                      key={idx}
+                      icon={benefit.icon}
+                      text={benefit.text}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -303,52 +228,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Modules */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 max-w-6xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
-            Apa Saja yang Dipelajari?
-          </h2>
-          <p className="text-center text-gray-600 mb-12">
-            Saat ini terdapat 148+ Materi yang sudah bisa diakses dan akan terus
-            diupdate
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {modules.map((module, idx) => {
-              const Icon = module.icon;
-              return (
-                <div
-                  key={idx}
-                  className="bg-gray-50 p-6 rounded-xl hover:shadow-md transition-shadow"
-                >
-                  <div className="flex items-start gap-3 mb-3">
-                    <Icon
-                      className="w-6 h-6 flex-shrink-0 mt-1"
-                      style={{ color: primaryColor }}
-                    />
-                    <h3 className="font-bold text-gray-900">{module.title}</h3>
-                  </div>
-                  <ul className="space-y-2 text-sm text-gray-600">
-                    {module.items.map((item, itemIdx) => (
-                      <li key={itemIdx} className="flex items-start gap-2">
-                        <span
-                          className="text-xs mt-1.5"
-                          style={{ color: primaryColor }}
-                        >
-                          ●
-                        </span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      {/* ModuleAccordion */}
+      <ModuleAccordion />
 
-      {/* Value Bundle */}
       <section
         className="py-16"
         style={{ backgroundColor: `${primaryColor}08` }}
@@ -425,24 +307,36 @@ export default function Home() {
                 );
               })}
             </ul>
-            <button
-              className="text-white font-bold py-5 px-12 rounded-full text-xl shadow-lg transform transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900"
-              style={{
-                backgroundColor: primaryColor,
-                boxShadow: `0 10px 25px -5px rgba(${primaryRgb}, 0.5)`,
-              }}
+            <a
+              href="https://kelasstruktur.com/step/daftar-jdsg/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block"
             >
-              DAFTAR SEKARANG
-            </button>
+              <button
+                className="text-white font-bold py-5 px-12 rounded-full text-xl shadow-lg transform transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900"
+                style={{
+                  backgroundColor: primaryColor,
+                  boxShadow: `0 10px 25px -5px rgba(${primaryRgb}, 0.5)`,
+                }}
+              >
+                DAFTAR SEKARANG
+              </button>
+            </a>
           </div>
         </div>
       </section>
 
+      {/* Value Bundle */}
+      <PricingBatch />
+
+      {/* FAQ */}
+      <FAQ />
+
       {/* Footer Note */}
       <footer className="py-8 border-t border-gray-200 bg-white">
         <div className="container mx-auto px-4 text-center text-gray-500 text-sm">
-          Cukup sekali daftar aja, bisa akses kelas selamanya. Ini investasi
-          jangka panjang, seumur hidup..
+          Copyright @ 2025 | Kelas Struktur. All rights reserved.
         </div>
       </footer>
     </main>

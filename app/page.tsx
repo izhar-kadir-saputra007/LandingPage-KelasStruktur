@@ -95,14 +95,14 @@ const BenefitItem = ({ icon: Icon, text }: { icon: any; text: string }) => (
 export default function Home() {
   return (
     <main
-      className={`${inter.variable} font-sans bg-white text-gray-800 py-16`}
+      className={`${inter.variable} font-sans bg-white text-gray-800`}
     >
       <StickyDaftar primaryColor={primaryColor} />
       {/* Hero Section */}
       <section className="relative py-10 md:py-12 overflow-hidden bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-4 max-w-6xl relative z-10">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight pt-8 md:pt-16">
               <span className="text-gray-900">Analisis & Desain Struktur</span>{" "}
               <span style={{ color: primaryColor }}>itu Susah!!</span>
             </h1>
